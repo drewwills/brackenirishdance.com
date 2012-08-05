@@ -1,0 +1,199 @@
+<?php
+
+function bracken_block_info() {
+
+    return array(
+        'classes' => array(
+            'info' => 'Bracken Classes',
+            'cache' => DRUPAL_CACHE_GLOBAL
+        ),
+        'registration' => array(
+            'info' => 'Bracken Registration',
+            'cache' => DRUPAL_CACHE_GLOBAL
+        ),
+        'location' => array(
+            'info' => 'Bracken Location',
+            'cache' => DRUPAL_CACHE_GLOBAL
+        ),
+        'fitd' => array(
+            'info' => 'Bracken FITD',
+            'cache' => DRUPAL_CACHE_GLOBAL
+        )
+    );
+
+}
+
+function bracken_block_view($delta = '') {
+
+    $rslt = array();
+
+    switch ($delta) {
+    
+        case 'classes':
+            $rslt['subject'] = t('Classes');
+            $rslt['content'] = array(
+                array('#markup' => '<p>Classes meet on Mondays, Wednesday, and Fridays; we teach all levels from Beginners to Open Champions and Adults.</p>'),
+                array('#markup' => '<p>New Beginners: Saturday 9-9:45 and Monday 4-4:45 p.m.</p>'),
+                array('#markup' => '<a href="' . url('classes') . '">Click here to find out more.</a>')
+            );
+            break;
+    
+        case 'registration':
+            $rslt['subject'] = t('Registration');
+            $rslt['content'] = array(
+                array('#markup' => '<p>Returning students can <a href="">download the registration form here</a>.</p>'),
+                array('#markup' => '<p><a href="">Tuition and fee information</a></p>'),
+                array('#markup' => '<p>New students will start in April. <a href="">Reserve your spot in the class</a>.</p>')
+            );
+            break;
+
+        case 'location':
+            $rslt['subject'] = t('Location');
+            $rslt['content'] = array(
+                array('#markup' => '<p>We are located in Jeanne\'s Dance School at the NW corner of Alma School and Galveston in Chandler.</p>'),
+                array('#markup' => '<p>We\'re an easy 2 miles east of the 101, 5 miles south of 60, and 2 miles north of the 202.</p>'),
+                array('#markup' => '<a href="' . url('locations') . '">address &amp; map</a>')
+            );
+            break;
+
+        case 'fitd':
+            $rslt['subject'] = t('Feis in the Desert');
+            $rslt['content'] = array(
+                array('#markup' => '<p>The new year in the Western Region starts with our school feis.</p>'),
+                array('#markup' => '<a href="http://www.feisinthedesert.org/">find out more</a>')
+            );
+            break;
+
+    }
+    
+    return $rslt;
+
+}
+
+function bracken_menu() {
+
+print 'foo!';
+
+    $rslt = array();
+    
+    $rslt['classes'] = array(
+        'title' => 'Classes',
+        'weight' => -6,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/classes.php'),
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+
+    $rslt['locations'] = array(
+        'title' => 'Locations',
+        'weight' => -5,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/locations.php'),
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+    
+    $rslt['about_us'] = array(
+        'title' => 'About Us',
+        'weight' => -4,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/about_us.php'),
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+    
+/*
+    $rslt['gallery'] = array(
+        'title' => 'Gallery',
+        'weight' => -3,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/gallery.php'),
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+*/
+    
+    $rslt['resources'] = array(
+        'title' => 'Resources',
+        'weight' => -2,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/resources.php'),
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+    
+    $rslt['contact_us'] = array(
+        'title' => 'Contact Us',
+        'weight' => -1,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/contact_us.php'),
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+    
+    $rslt['secure'] = array(
+        'title' => 'Secure',
+        'weight' => 0,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/secure.php'),
+        'access callback' => 'bracken_is_user_in_role',
+        'access arguments' => array(array('administrator', 'chandler', 'salisbury')),
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+    
+    $rslt['chandler'] = array(
+        'title' => 'Chandler',
+        'weight' => 1,
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/chandler.php'),
+        'access callback' => 'bracken_is_user_in_role',
+        'access arguments' => array(array('administrator', 'chandler')),
+        'menu_name' => 'main-menu',
+        'type' => MENU_NORMAL_ITEM
+    );
+    
+    /*
+     * Non-Menu Pages
+     */
+
+    $rslt['dancewear'] = array(
+        'title' => 'Dancewear',
+        'file' => 'bracken.util.inc',
+        'page callback' => 'bracken_include',
+        'page arguments' => array('pages/dancewear.php'),
+        'access callback' => 'bracken_is_user_in_role',
+        'access arguments' => array(array('administrator', 'chandler', 'salisbury')),
+        'type' => MENU_CALLBACK
+    );
+
+    return $rslt;
+
+}
+
+function bracken_is_user_in_role($roles) {
+    global $user;
+    $rslt = false;  // default
+    foreach ($roles as $role) {
+        if (in_array($role, $user->roles)) {
+            $rslt = true;
+            break;
+        }
+    }
+    return $rslt;
+}
