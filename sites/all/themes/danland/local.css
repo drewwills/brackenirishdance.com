@@ -1,0 +1,211 @@
+/* $Id: local_sample.css,v 1.1 2010/04/08 17:16:16 danprobo Exp $ */
+
+/****************************/
+/* LOCAL CSS                */
+/****************************/
+
+/* Put your custom css and css overrides in this file and  */ 
+/* rename it local.css.  By restricting your css changes   */
+/* to local.css, your changes will not be overwritten when */
+/* upgrading to a new version of this theme.               */
+
+/* Steps to activate local.css:                       */
+/* 1. Add your custom css to this file                */
+/* 2. Rename this file to local.css                   */
+/* 3. Uncomment (remove leading semicolon from ) the  */ 
+/*    following line in your theme's .info file:      */
+/*    ;stylesheets[all][] = local.css                 */
+/* 4. Clear cached data at admin/settings/performance */
+
+body {
+	background: #17293d url(images/body.gif);
+}
+
+.logo img {
+	height: 100px;	
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #005A8C;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+
+h1.site-name {
+	top: 40px;
+	font-size: 35px;
+}
+
+h1.site-name a {
+	color: #FFFFFF;
+}
+
+#slideshow-wrapper {
+	background: transparent;
+	height: 320px;
+}
+
+#menu {
+	background: url(images/menu-bgLime.png) repeat-x;
+}
+
+#rounded-menu-left {
+	background: url(images/menu-left-bgLime.png) no-repeat;
+}
+
+#rounded-menu-right {
+	background: url(images/menu-right-bgLime.png) no-repeat;
+}
+
+#nav {
+	background: url(images/menu-bgLime.gif) repeat-x;
+}
+
+#nav li {
+	background: url(images/menu-separatorLime.png) no-repeat right top;
+}
+
+#nav li a:hover {
+	background:transparent url(images/menu-hover-bgLime.png) repeat-x;
+}
+
+#nav li.active-trail a {
+    background:transparent url(images/menu-hover-bgLime.png) repeat-x;
+}
+
+#sidebar-left h2.block-title, #sidebar-right h2.block-title {
+	background-color: lime;
+	color: blue;
+}
+
+#content {
+	background-color: #FFF;
+	/*border: 1px lime solid;*/
+	border-right: 1px solid #BBB;
+	border-bottom: 1px solid #BBB;
+	border-left: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	padding: 4px 8px;
+}
+
+.two-sidebars #content {
+    width: 53%;
+}
+
+/*
+ * Utilities
+ */
+
+.clear {
+    clear: both;
+}
+
+/*
+ * Classes page
+ */
+
+#classes {
+    padding: 0 16px;
+}
+
+#classes .location {
+	margin-top: 16px;
+    width: 48%;
+    padding: 0 12px 0 0;
+}
+
+/*
+ * Locations page
+ */
+
+#locations .location {
+    margin-top: 20px;
+    padding: 0 40px;
+}
+
+#locations .location .map-outer {
+    width: 360px;
+    height: 360px;
+}
+
+#locations .location .address-outer {
+    width: 400px;
+}
+
+#locations .location .address {
+    list-style: none;
+}
+
+/*
+ * About Us page
+ */
+
+#about-us {
+    padding: 0 16px;
+}
+
+#about-us .profile {
+    float: right;
+    margin: 0 0 16px 16px;
+}
+
+/*
+ * Resources page
+ */
+
+#resources {
+    margin-top: 20px;
+    padding: 0 16px;
+}
+
+/*
+ * Contact Us page
+ */
+
+#contact-us {
+    margin-top: 20px;
+}
+
+#contact-us .field {
+    float: left;
+}
+
+#contact-us .name {
+    width: 200px;
+    height: 32px;
+    text-align: right;
+    margin-right: 12px;
+}
+
+#contact-us .name {
+    color: #cc3300;
+    font-weight: bold;
+}
+
+/*
+ * Secure page
+ */
+
+#secure .button {
+	display: inline-block;
+    padding: 24px 52px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background-color: #FC9;
+    border: 1px solid #C30;
+}
+
+#secure .dancewear {
+}
